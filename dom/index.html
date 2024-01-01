@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .containerIn {
+            border-color: yellow;
+        }
+    </style>
+
+</head>
+
+<body>
+    <center style="margin: 10%;">
+        <!-- <form id="form">
+            <input type="number" name="x" id="x" placeholder="Enter first number" class="containerIn"><br><br>
+            <input type="number" name="y" id="y" placeholder="Enter second number" class="containerIn"><br><br><br>
+            <button type="submit">SUM</button>
+        </form> -->
+
+        <input type="number" name="x" id="x" placeholder="Enter first number" class="containerIn"
+            onkeyup="debounceCall()"><br><br>
+        <input type="number" name="y" id="y" placeholder="Enter second number" class="containerIn"
+            onkeyup="debounceCall()"><br><br><br>
+
+        <p id="res"></p>
+    </center>
+
+
+    <script>
+        const xTag = document.getElementById("x")
+        const yTag = document.getElementById("y")
+        const res = document.getElementById("res")
+        // const form = document.getElementById('form')
+        // form.addEventListener("submit", (e) => {
+        //     e.preventDefault()
+        function calculate() {
+            const x = xTag.value
+            const y = yTag.value
+            // const sum = +x + +y
+            // res.textContent = `The sum is: ${sum}`
+
+            fetch(`https://sum-server.100xdevs.com/sum?a=${x}&b=${y}`, { "method": "GET" })
+                .then(async (response) => {
+                    const ans = await response.text()
+                    res.textContent = `The sum is: ${ans}`
+                })
+        }
+
+
+        let timeout;
+        function debounceCall() {
+            clearTimeout(timeout)
+            timeout = setTimeout(
+                calculate, 500)
+        }
+        // })
+    </script>
+</body>
+
+</html>

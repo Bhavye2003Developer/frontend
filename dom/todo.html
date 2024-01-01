@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="title" id="title" placeholder="Enter title">
+    <input type="text" name="desc" id="desc" placeholder="Enter desc">
+    <button type="submit" id="submit">TODO</button>
+
+
+    <div class="todos">
+
+    </div>
+
+    <script>
+        const allTodos = [
+            {
+                id: 1,
+                title: "Superman is alive",
+                desc: "The god lives"
+            },
+            {
+                id: 2,
+                title: "Batman is dead",
+                desc: "How powerful was batman?"
+            }
+        ]
+    </script>
+
+    <script>
+        let globalId = 0;
+
+        const title = document.getElementById("title")
+        const desc = document.getElementById("desc")
+        const submit = document.getElementById("submit")
+        const todos = document.querySelector(".todos")
+
+        for (let i = 0; i < allTodos.length; ++i) {
+            addTodo(allTodos[i]['title'], allTodos[i]['desc'], allTodos[i]['id'])
+        }
+
+        submit.addEventListener("click", (e) => {
+            addTodo(title.value, desc.value, globalId)
+            ++globalId
+        })
+
+
+        function addTodo(title, desc, id) {
+            const childDiv = document.createElement("div")
+            childDiv.id = id
+            childDiv.innerHTML = `
+                <div>${title}</div>
+                <div>${desc}</div>
+                <button onclick="onDone(${id})" value=0>Mark as done</button><br><br><br>
+            `
+            todos.appendChild(childDiv)
+        }
+
+        function onDone(id) {
+            const button = document.getElementById(id).children[2]
+            // console.log(button)
+            if (button.value == "0") {
+                button.innerText = "Done"
+                button.value = "1"
+            }
+            else {
+                alert("Already done")
+            }
+        }
+    </script>
+</body>
+
+</html>
