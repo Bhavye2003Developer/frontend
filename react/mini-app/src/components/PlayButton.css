@@ -1,0 +1,11 @@
+#play {
+    background-color: black;
+    color: yellow;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 20px;
+}
+
+#play:hover {
+    background-color: grey;
+}
