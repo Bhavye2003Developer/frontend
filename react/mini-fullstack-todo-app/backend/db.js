@@ -6,6 +6,8 @@ const dbUrl = process.env.DB_URL
 // @ts-ignore
 mongoose.connect(dbUrl).then(() => {
     console.log("db connected successfully")
+}).catch(err => {
+    console.log(`error: ${err}`)
 })
 
 const todoSchema = new mongoose.Schema({
