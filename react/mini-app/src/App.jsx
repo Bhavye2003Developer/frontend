@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import React from 'react'
 import Clock from './components/Clock'
 import StopWatch from './components/StopWatch'
+import Input from './components/Input'
 
 function App() {
 
@@ -51,7 +52,10 @@ function App() {
 
           {/* <Clock></Clock> */}
 
-          <StopWatch></StopWatch>
+          {/* <StopWatch></StopWatch> */}
+
+
+          <Input></Input>
 
 
         </div>
