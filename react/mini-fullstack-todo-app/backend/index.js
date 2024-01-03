@@ -13,20 +13,30 @@ app.get("/todos", (req, res) => {
 })
 
 app.post("/todo", (req, res) => {
-    let todo = req.body
-    try {
-        todo = types.todo.parse(todo)
-        console.log(todo)
+    const todo = req.body
+    const parsedTodo = types.todo.safeParse(todo)
+    console.log(parsedTodo)
+
+    if (parsedTodo.success === false) {
+        res.status(411).json({
+            msg: "invalid body"
+        })
     }
-    catch (err) {
-        res.send("Invalid body")
-        return
-    }
-    res.send("created")
+    console.log(parsedTodo)
 })
 
+
+
 app.put("/completed", (req, res) => {
-    res.send()
+    const id = req.body
+    const parsedId = types.markCompleted.safeParse(id)
+
+    if (parsedId.success === false) {
+        res.status(411).json({
+            msg: "id not found"
+        })
+    }
+
 })
 
 
