@@ -1,0 +1,62 @@
+/* TodoForm.css */
+
+.todo-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ecf0f1;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+}
+
+.todo-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.todo-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.todo-form button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.todo-form button:hover {
+    background-color: #27ae60;
+}
+
+.todo-details {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #3498db;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.todo-details p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.todo-details p strong {
+    font-weight: bold;
+    color: #3498db;
+}

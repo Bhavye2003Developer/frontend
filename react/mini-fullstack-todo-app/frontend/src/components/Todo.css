@@ -1,0 +1,32 @@
+/* Todo.css */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.todo {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    /* Adjust the maximum width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    text-align: left;
+    /* Align text content to the left */
+}
+
+.todo p {
+    margin: 0;
+}
+
+.todo p strong {
+    margin-right: 5px;
+}
