@@ -3,6 +3,7 @@ require('dotenv').config()
 
 
 const dbUrl = process.env.DB_URL
+
 // @ts-ignore
 mongoose.connect(dbUrl).then(() => {
     console.log("db connected successfully")
@@ -13,12 +14,19 @@ mongoose.connect(dbUrl).then(() => {
 const todoSchema = new mongoose.Schema({
     title: String,
     description: String,
+    email: String,
     completed: { type: Boolean, default: false }
 })
 
-const todo = mongoose.model('todo', todoSchema)
+const userSchema = new mongoose.Schema({
+    username: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true }
+})
 
+const todo = mongoose.model('Todo', todoSchema)
+const user = mongoose.model("User", userSchema)
 
 module.exports = {
-    todo
+    todo, user
 }

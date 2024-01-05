@@ -6,11 +6,15 @@ function Todo({ _id, title, description, completed }) {
     console.log("todo renders")
 
     async function markTodoCompleted(id) {
+        const token = localStorage.getItem("token")
+
         await fetch('http://localhost:3000/completed', {
             method: "PUT",
+            // @ts-ignore
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': token
             },
             body: JSON.stringify({
                 id

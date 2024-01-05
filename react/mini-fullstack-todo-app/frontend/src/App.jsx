@@ -15,7 +15,16 @@ function App() {
 
 
   async function getAllTodos() {
-    const data = await fetch("http://localhost:3000/todos")
+
+    const token = localStorage.getItem("token")
+    // console.log(token)
+
+    const data = await fetch("http://localhost:3000/todos", {
+      // @ts-ignore
+      headers: {
+        "Authorization": token
+      }
+    })
     const response = await data.json()
     console.log(response)
     setTodos(response.todos)
