@@ -1,20 +1,25 @@
 import { useEffect, useState } from 'react'
-// import './App.css'
 import React from 'react'
-import Clock from './components/Clock'
-import StopWatch from './components/StopWatch'
-import Input from './components/Input'
+import videosData from '../data/videos.json'
+import AddVideo from './components/AddVideo'
+import VideoList from './components/VideoList'
 
 function App() {
 
+  const [videos, setVideos] = useState(videosData)
+
   console.log("app renders")
+
+  function addVideo(video) {
+    setVideos([...videos, { src: "https://picsum.photos/400/307", ...video }])
+  }
 
   return (
     <>
       <div>
 
         <center>
-          {/* <h2>YouTube</h2> */}
+          <h2>YouTube</h2>
         </center>
 
         <div style={{
@@ -39,15 +44,9 @@ function App() {
 
           <Video></Video> */}
 
-          {/* {videos.map((video, index) => <Video key={index} {...video}>
-            <PlayButton onPlay={() => {
-              console.log("playing... -> " + video.title)
-            }}
-              onPause={() => {
-                console.log("paused -> " + video.title)
-              }}
-            >Play</PlayButton>
-          </Video>)} */}
+          <AddVideo onAdd={addVideo}></AddVideo>
+          <VideoList videos={videos}></VideoList>
+
 
 
           {/* <Clock></Clock> */}
@@ -55,7 +54,7 @@ function App() {
           {/* <StopWatch></StopWatch> */}
 
 
-          <Input></Input>
+          {/* <Input></Input> */}
 
 
         </div>

@@ -21,7 +21,7 @@ app.post("/signup", (req, res) => {
     const user = req.body
     const parsedUser = types.user.safeParse(user)
     if (parsedUser.success === false) {
-        res.json({
+        res.status(400).json({
             msg: "body invalid!"
         })
         return
@@ -29,18 +29,19 @@ app.post("/signup", (req, res) => {
 
     db.user.findOne({ email: user.email }).exec().then((userExisted) => {
         if (userExisted) {
-            res.json({
+            // resource already exists -> 409 http code
+            res.status(409).json({
                 msg: "email already exists!"
             })
             return
         }
         const newUser = new db.user(user)
         newUser.save().then(() => {
-            res.json({
+            res.status(200).json({
                 msg: "user created successfully..."
             })
         }).catch(err => {
-            res.json({
+            res.status(400).json({
                 msg: 'error occured'
             })
         })
