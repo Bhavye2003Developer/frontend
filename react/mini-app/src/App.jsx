@@ -3,6 +3,8 @@ import React from 'react'
 import videosData from '../data/videos.json'
 import AddVideo from './components/AddVideo'
 import VideoList from './components/VideoList'
+import Nations from './components/Nations'
+import FilteredList from './components/FilteredList'
 
 function App() {
 
@@ -44,8 +46,8 @@ function App() {
 
           <Video></Video> */}
 
-          <AddVideo onAdd={addVideo}></AddVideo>
-          <VideoList videos={videos}></VideoList>
+          {/* <AddVideo onAdd={addVideo}></AddVideo>
+          <VideoList videos={videos}></VideoList> */}
 
 
 
@@ -55,6 +57,11 @@ function App() {
 
 
           {/* <Input></Input> */}
+
+
+          {/* <Nations></Nations> */}
+
+          <FilteredList></FilteredList>
 
 
         </div>
